@@ -42,7 +42,7 @@
         _imageURL = [NSURL URLWithString:[sourceDict objectForKey:@"url"]];
     }
     
-    NSLog(@"%@", [self description]);
+//    NSLog(@"%@", [self description]);
     
     return self;
 }

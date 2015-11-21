@@ -51,7 +51,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="129"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-vC-F2Z">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reddit-alien.png" translatesAutoresizingMaskIntoConstraints="NO" id="CWd-vC-F2Z">
                                                     <rect key="frame" x="8" y="20" width="120" height="89"/>
                                                     <animations/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -175,8 +175,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Im0-3Z-rFT">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerImage.png" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-1f-g4D">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="75"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="pQV-1f-g4D">
+                                        <rect key="frame" x="0.0" y="17" width="600" height="50"/>
                                         <animations/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -191,15 +191,32 @@
                                             <action selector="popToMainTable" destination="Ngi-eQ-PeN" eventType="touchUpInside" id="hrj-RL-yoC"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APU-H7-aGU">
+                                        <rect key="frame" x="522" y="8" width="70" height="59"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="59" id="kZJ-bN-nkg"/>
+                                            <constraint firstAttribute="width" constant="70" id="m08-I2-yqO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
+                                        <state key="normal" title="Save">
+                                            <color key="titleColor" red="0.90588235289999997" green="0.47843137250000001" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="saveToCameraRoll:" destination="Ngi-eQ-PeN" eventType="touchUpInside" id="VBA-JA-oY3"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.94899378270000001" green="0.86450146880000001" blue="0.50070376009999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="pQV-1f-g4D" firstAttribute="width" secondItem="Im0-3Z-rFT" secondAttribute="width" id="8LU-NR-2Q0"/>
-                                    <constraint firstAttribute="bottom" secondItem="pQV-1f-g4D" secondAttribute="bottom" id="9GW-I6-IgC"/>
+                                    <constraint firstAttribute="bottom" secondItem="pQV-1f-g4D" secondAttribute="bottom" constant="8" id="9GW-I6-IgC"/>
+                                    <constraint firstItem="APU-H7-aGU" firstAttribute="top" secondItem="Im0-3Z-rFT" secondAttribute="top" constant="8" id="BOz-5h-gMf"/>
                                     <constraint firstAttribute="height" constant="75" id="ErN-WD-iDC"/>
+                                    <constraint firstAttribute="trailing" secondItem="APU-H7-aGU" secondAttribute="trailing" constant="8" id="Iyk-Gh-uys"/>
                                     <constraint firstItem="pQV-1f-g4D" firstAttribute="leading" secondItem="Im0-3Z-rFT" secondAttribute="leading" id="NDl-rd-fUH"/>
-                                    <constraint firstItem="pQV-1f-g4D" firstAttribute="top" secondItem="Im0-3Z-rFT" secondAttribute="top" id="TVB-vH-Q2P"/>
+                                    <constraint firstItem="pQV-1f-g4D" firstAttribute="top" secondItem="Im0-3Z-rFT" secondAttribute="top" constant="17" id="TVB-vH-Q2P"/>
                                 </constraints>
                             </view>
                             <webView contentMode="scaleAspectFit" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r39-76-e7o">
@@ -234,6 +251,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Reddit-alien.png" width="500" height="500"/>
         <image name="headerImage.png" width="1001" height="235"/>
         <image name="placeholder.png" width="736" height="622"/>
     </resources>

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RCLinkDetailViewController : UIViewController <UIWebViewDelegate>
+@interface RCLinkDetailViewController : UIViewController <UIWebViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIWebView * webView;
 @property (nonatomic, retain) NSURL * url;

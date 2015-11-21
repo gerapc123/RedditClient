@@ -22,6 +22,7 @@
 		846C32341C00A5E80028BDAD /* headerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C32331C00A5E80028BDAD /* headerImage.png */; };
 		846C32381C00D9580028BDAD /* RCLinkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C32371C00D9580028BDAD /* RCLinkDetailViewController.m */; };
 		846C323B1C00D9720028BDAD /* RCMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C323A1C00D9720028BDAD /* RCMainTableViewController.m */; };
+		846C323D1C00E7980028BDAD /* Reddit-alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C323C1C00E7980028BDAD /* Reddit-alien.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		846C32371C00D9580028BDAD /* RCLinkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCLinkDetailViewController.m; path = Controller/RCLinkDetailViewController.m; sourceTree = "<group>"; };
 		846C32391C00D9720028BDAD /* RCMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCMainTableViewController.h; path = Controller/RCMainTableViewController.h; sourceTree = "<group>"; };
 		846C323A1C00D9720028BDAD /* RCMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCMainTableViewController.m; path = Controller/RCMainTableViewController.m; sourceTree = "<group>"; };
+		846C323C1C00E7980028BDAD /* Reddit-alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reddit-alien.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 			children = (
 				846C32331C00A5E80028BDAD /* headerImage.png */,
 				846C322F1C00A0810028BDAD /* placeholder.png */,
+				846C323C1C00E7980028BDAD /* Reddit-alien.png */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				846C31F31C004F240028BDAD /* Assets.xcassets in Resources */,
 				846C31EE1C004F240028BDAD /* Main.storyboard in Resources */,
 				846C32341C00A5E80028BDAD /* headerImage.png in Resources */,
+				846C323D1C00E7980028BDAD /* Reddit-alien.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

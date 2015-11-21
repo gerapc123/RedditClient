@@ -38,28 +38,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     RCRedditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid" forIndexPath:indexPath];
     RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
     
-    cell.titleLabel.text = subreddit.title;
-    cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
-    cell.createdAtLabel.text = [subreddit getCreatedAgo];
-    cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
-    if (subreddit.thumbnailImageData) {
-        cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
-    } else {
-        cell.thumbnailImage.image = [UIImage imageNamed:@"placeholder.png"];
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cell.titleLabel.text = subreddit.title;
+        cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
+        cell.createdAtLabel.text = [subreddit getCreatedAgo];
+        cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
+        if (subreddit.thumbnailImageData) {
+            cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
+        } else {
+            cell.thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        }
+    });
     
     return cell;
-}
-
-#pragma mark - TableViewDelegate
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
-//    RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
-//    UIPopoverPresentationController * urlDetails = [[UIPopoverPresentationController alloc] initWithPresentedViewController:self presentingViewController:[[UIViewController alloc] init]];
-    
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -74,7 +69,6 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

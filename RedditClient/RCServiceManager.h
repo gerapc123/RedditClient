@@ -13,5 +13,6 @@
 + (RCServiceManager*)sharedInstance;
 
 -(void)getHotSubredditsWithCallbackBlock:(void (^)(NSArray*))callbackBlock;
+-(void)getImageWithImageURL:(NSURL*) url andCallbackBlock:(void (^)(NSData*))callbackBlock;
 
 @end

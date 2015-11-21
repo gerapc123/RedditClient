@@ -7,6 +7,7 @@
 //
 
 #import "RCRedditTableViewCell.h"
+#import "RCServiceManager.h"
 
 @implementation RCRedditTableViewCell
 
@@ -14,10 +15,13 @@
 @synthesize numberOfCommentsLabel;
 @synthesize createdAtLabel;
 @synthesize authorLabel;
-@synthesize thumbnailImage;
+@synthesize thumbnailImage = _thumbnailImage;
 
 - (void)awakeFromNib {
     // Initialization code
+}
+
+-(void)setThumbnailImageWithURL:(NSURL*)url {
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

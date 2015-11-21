@@ -13,6 +13,7 @@
 @property (nonatomic, retain) NSString  * subredditId;
 @property (nonatomic, retain) NSString  * title;
 @property (nonatomic, retain) NSString  * author;
+@property (nonatomic, retain) NSData    * thumbnailImageData;
 @property (nonatomic, retain) NSURL     * thumbnailURL;
 @property (nonatomic, retain) NSURL     * imageURL;
 @property (nonatomic, retain) NSDate    * createdAt;

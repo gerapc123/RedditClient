@@ -7,6 +7,7 @@
 //
 
 #import "RCSubredditObject.h"
+#import "RCServiceManager.h"
 
 #define DAY_HOURS 24
 #define HOUR_SECONDS 60
@@ -21,6 +22,7 @@
 @synthesize createdAt           = _createdAt;
 @synthesize numberOfComments    = _numberOfComments;
 @synthesize score               = _score;
+@synthesize thumbnailImageData  = _thumbnailImageData;
 
 -(instancetype)initWithDictionary:(NSDictionary*)dict {
     if (!self){
@@ -29,7 +31,6 @@
     _subredditId = [dict objectForKey:@"subreddit_id"];
     _title = [dict objectForKey:@"title"];
     _author = [dict objectForKey:@"author"];
-    _thumbnailURL = [NSURL URLWithString:[dict objectForKey:@"thumbnail"]];
     _numberOfComments = [[dict objectForKey:@"num_comments"] intValue];
     _score = [[dict objectForKey:@"score"] intValue];
     
@@ -42,7 +43,12 @@
         _imageURL = [NSURL URLWithString:[sourceDict objectForKey:@"url"]];
     }
     
-//    NSLog(@"%@", [self description]);
+    _thumbnailURL = [NSURL URLWithString:[dict objectForKey:@"thumbnail"]];
+    if (![_thumbnailURL.absoluteString isEqualToString:@""]) {
+        [[RCServiceManager sharedInstance] getImageWithImageURL:_thumbnailURL andCallbackBlock:^(NSData *imageData) {
+            _thumbnailImageData = imageData;
+        }];
+    }
     
     return self;
 }

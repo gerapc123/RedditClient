@@ -13,6 +13,7 @@
 
 @interface RCMainTableViewController () {
     NSArray * subredditObjects;
+    IBOutlet UITableView * myTableView;
 }
 
 @end
@@ -24,7 +25,7 @@
     
     [[RCServiceManager sharedInstance] getHotSubredditsWithCallbackBlock:^(NSArray *hot) {
         subredditObjects = hot;
-        [self.tableView reloadData];
+        [myTableView reloadData];
     }];
 }
 
@@ -34,8 +35,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     RCRedditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid" forIndexPath:indexPath];
+    RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
     
-//    cell.textLabel.text = [(RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row] title];
+    cell.titleLabel.text = subreddit.title;
+    cell.authorLabel.text = subreddit.author;
+    cell.createdAtLabel.text = [subreddit getCreatedAgo];
+    cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d", subreddit.numberOfComments];
     
     return cell;
 }

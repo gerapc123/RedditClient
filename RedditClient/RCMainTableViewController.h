@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RCMainTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface RCMainTableViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
 
 }
 

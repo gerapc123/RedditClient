@@ -34,8 +34,12 @@
     _numberOfComments = [[dict objectForKey:@"num_comments"] intValue];
     _score = [[dict objectForKey:@"score"] intValue];
     
-    float epocTime = [[dict objectForKey:@"created"] floatValue];
+    NSTimeInterval epocTime = [[dict objectForKey:@"created"] floatValue];
+//    NSTimeInterval currentEpocTime = [[NSDate date] timeIntervalSince1970];
+    
+//    NSTimeInterval diferencia = epocTime - (currentEpocTime-3*60.0*60.0);
     _createdAt = [NSDate dateWithTimeIntervalSince1970:epocTime];
+    NSLog(@"Title:%@ || %@", _title, _createdAt);
     
     _imageURL = nil;
     NSDictionary * sourceDict = [[[[dict objectForKey:@"preview"] objectForKey:@"images"] objectAtIndex:0] objectForKey:@"source"];
@@ -55,12 +59,15 @@
 
 -(NSString*)getCreatedAgo{
     float interval = [_createdAt timeIntervalSinceNow];
-
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+//    NSData * newDate = dateFormatter
+    
     NSString * dateString = @"";
     if (interval < HOUR_SECONDS) {
         dateString = [NSString stringWithFormat:@"Posted %d seconds ago", (int)interval];
     } else {
-        int hours = interval/HOUR_SECONDS;
+        int hours = interval/(HOUR_SECONDS*2);
         dateString = [NSString stringWithFormat:@"Posted %d hours ago", hours];
         
         if (hours > DAY_HOURS) {

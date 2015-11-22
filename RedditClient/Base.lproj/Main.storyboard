@@ -44,7 +44,7 @@
                                 <color key="separatorColor" red="0.82853403140000004" green="0.62664123140000005" blue="0.2609513899" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="1" green="0.91268176729999995" blue="0.52390386509999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellid" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cellid" rowHeight="130" id="tw6-CW-rqV" customClass="RCRedditTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="cellid" selectionStyle="none" indentationWidth="10" shouldIndentWhileEditing="NO" reuseIdentifier="cellid" rowHeight="130" id="tw6-CW-rqV" customClass="RCRedditTableViewCell">
                                         <rect key="frame" x="0.0" y="28" width="600" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tw6-CW-rqV" id="NFa-kc-xP5">
@@ -138,14 +138,23 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="2MI-Nw-wJx"/>
                                 </connections>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-jh-TLP">
+                                <rect key="frame" x="275" y="281" width="50" height="37"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="mY2-hw-ygQ"/>
+                                </constraints>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="1" green="0.91268176729999995" blue="0.52390386509999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Qnk-fR-tVZ" firstAttribute="top" secondItem="cnc-q7-iDA" secondAttribute="bottom" id="1e6-ch-2wP"/>
+                            <constraint firstItem="Nau-jh-TLP" firstAttribute="centerX" secondItem="ynT-ov-7cl" secondAttribute="centerX" id="5Tj-qW-2hj"/>
                             <constraint firstItem="Qnk-fR-tVZ" firstAttribute="leading" secondItem="ynT-ov-7cl" secondAttribute="leading" id="7e2-LU-OUo"/>
                             <constraint firstItem="uwa-Ve-Xmy" firstAttribute="top" secondItem="A5Q-Pr-8dk" secondAttribute="bottom" id="D5K-8h-HtK"/>
                             <constraint firstItem="Qnk-fR-tVZ" firstAttribute="leading" secondItem="A5Q-Pr-8dk" secondAttribute="leading" id="Hb0-Dv-57E"/>
+                            <constraint firstItem="Nau-jh-TLP" firstAttribute="centerY" secondItem="ynT-ov-7cl" secondAttribute="centerY" id="QjM-Xm-2t0"/>
                             <constraint firstItem="A5Q-Pr-8dk" firstAttribute="top" secondItem="Qnk-fR-tVZ" secondAttribute="bottom" id="hef-xL-rJ3"/>
                             <constraint firstItem="A5Q-Pr-8dk" firstAttribute="width" secondItem="ynT-ov-7cl" secondAttribute="width" id="ok9-DT-KFq"/>
                             <constraint firstItem="Qnk-fR-tVZ" firstAttribute="width" secondItem="ynT-ov-7cl" secondAttribute="width" id="vUF-Gk-xQR"/>
@@ -153,6 +162,7 @@
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="Nau-jh-TLP" id="NDQ-mC-wm4"/>
                         <outlet property="myTableView" destination="A5Q-Pr-8dk" id="n19-gW-w6g"/>
                     </connections>
                 </viewController>
@@ -230,7 +240,7 @@
                             </webView>
                         </subviews>
                         <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="0.91268176729999995" blue="0.52390386509999998" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Im0-3Z-rFT" secondAttribute="trailing" id="7G3-xo-HP8"/>
                             <constraint firstItem="r39-76-e7o" firstAttribute="top" secondItem="Im0-3Z-rFT" secondAttribute="bottom" id="GZ5-rA-wOx"/>

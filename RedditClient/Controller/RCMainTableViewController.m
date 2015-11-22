@@ -16,6 +16,7 @@
 @interface RCMainTableViewController () {
     NSArray * subredditObjects;
     IBOutlet UITableView * myTableView;
+    IBOutlet UIActivityIndicatorView * activityIndicator;
 }
 
 @end
@@ -25,9 +26,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [activityIndicator startAnimating];
     [[RCServiceManager sharedInstance] getHotSubredditsWithCallbackBlock:^(NSArray *hot) {
         subredditObjects = hot;
-        [myTableView reloadData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [myTableView reloadData];
+        });
+        [activityIndicator stopAnimating];
+        activityIndicator.hidden = YES;
     }];
 }
 
@@ -38,30 +44,34 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     RCRedditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid" forIndexPath:indexPath];
     RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
+
+    cell.userInteractionEnabled = NO;
+    cell.titleLabel.text = subreddit.title;
+    cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
+    cell.createdAtLabel.text = [subreddit getCreatedAgo];
+    cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        cell.titleLabel.text = subreddit.title;
-        cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
-        cell.createdAtLabel.text = [subreddit getCreatedAgo];
-        cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
-        if (subreddit.thumbnailImageData) {
-            cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
-        } else {
-            cell.thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+    if (subreddit.thumbnailImageData) {
+        cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
+        cell.userInteractionEnabled = YES;
+    } else {
+        cell.thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        if (![subreddit.thumbnailURL.absoluteString isEqualToString:@""]) {
+            [cell setThumbnailImageWithURL:subreddit.thumbnailURL];
+            cell.userInteractionEnabled = YES;
         }
-    });
-    
+    }
+
     return cell;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    NSIndexPath *indexPath = [myTableView indexPathForSelectedRow];
     if ([[segue identifier] isEqualToString:@"showDetailLink"])
     {
-        NSIndexPath *indexPath = [myTableView indexPathForSelectedRow];
         RCSubredditObject *object = subredditObjects[indexPath.row];
         [(RCLinkDetailViewController*)[segue destinationViewController] setUrl:object.imageURL];
     }

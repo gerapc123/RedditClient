@@ -75,13 +75,17 @@
 }
 
 -(void)getImageWithImageURL:(NSURL*) url andCallbackBlock:(void (^)(NSData*))callbackBlock {
-    NSURLSessionDownloadTask *getImageTask =
-    [urlSession downloadTaskWithURL:url
-                  completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                      NSData * responseData = [NSData dataWithContentsOfURL:location];
-                      callbackBlock(responseData);
-                  }];
-    [getImageTask resume];
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSError * error = nil;
+        NSData * imageData = [NSData dataWithContentsOfURL:url options:0 error:&error];
+        if (error)
+            callbackBlock(nil);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callbackBlock(imageData);
+        });
+    });
 }
 
 @end

@@ -21,6 +21,13 @@
 }
 
 -(void)setThumbnailImageWithURL:(NSURL*)url {
+    [[RCServiceManager sharedInstance] getImageWithImageURL:url andCallbackBlock:^(NSData *imageData) {
+        if (imageData) {
+            _thumbnailImage.image = [UIImage imageWithData:imageData];
+        } else {
+            _thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        }
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

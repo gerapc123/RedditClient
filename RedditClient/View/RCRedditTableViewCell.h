@@ -16,5 +16,6 @@
 @property (nonatomic, retain) IBOutlet UILabel * authorLabel;
 @property (nonatomic, retain) IBOutlet UIImageView * thumbnailImage;
 
+-(void)setThumbnailImageWithURL:(NSURL*)url;
 
 @end

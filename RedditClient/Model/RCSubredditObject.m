@@ -7,6 +7,7 @@
 //
 
 #import "RCSubredditObject.h"
+#import "RCServiceManager.h"
 
 #define DAY_HOURS 24
 #define HOUR_SECONDS 60
@@ -21,6 +22,7 @@
 @synthesize createdAt           = _createdAt;
 @synthesize numberOfComments    = _numberOfComments;
 @synthesize score               = _score;
+@synthesize thumbnailImageData  = _thumbnailImageData;
 
 -(instancetype)initWithDictionary:(NSDictionary*)dict {
     if (!self){
@@ -29,12 +31,15 @@
     _subredditId = [dict objectForKey:@"subreddit_id"];
     _title = [dict objectForKey:@"title"];
     _author = [dict objectForKey:@"author"];
-    _thumbnailURL = [NSURL URLWithString:[dict objectForKey:@"thumbnail"]];
     _numberOfComments = [[dict objectForKey:@"num_comments"] intValue];
     _score = [[dict objectForKey:@"score"] intValue];
     
-    float epocTime = [[dict objectForKey:@"created"] floatValue];
+    NSTimeInterval epocTime = [[dict objectForKey:@"created"] floatValue];
+//    NSTimeInterval currentEpocTime = [[NSDate date] timeIntervalSince1970];
+    
+//    NSTimeInterval diferencia = epocTime - (currentEpocTime-3*60.0*60.0);
     _createdAt = [NSDate dateWithTimeIntervalSince1970:epocTime];
+    NSLog(@"Title:%@ || %@", _title, _createdAt);
     
     _imageURL = nil;
     NSDictionary * sourceDict = [[[[dict objectForKey:@"preview"] objectForKey:@"images"] objectAtIndex:0] objectForKey:@"source"];
@@ -42,17 +47,27 @@
         _imageURL = [NSURL URLWithString:[sourceDict objectForKey:@"url"]];
     }
     
+    _thumbnailURL = [NSURL URLWithString:[dict objectForKey:@"thumbnail"]];
+    if (![_thumbnailURL.absoluteString isEqualToString:@""]) {
+        [[RCServiceManager sharedInstance] getImageWithImageURL:_thumbnailURL andCallbackBlock:^(NSData *imageData) {
+            _thumbnailImageData = imageData;
+        }];
+    }
+    
     return self;
 }
 
 -(NSString*)getCreatedAgo{
     float interval = [_createdAt timeIntervalSinceNow];
-
+    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
+//    NSData * newDate = dateFormatter
+    
     NSString * dateString = @"";
     if (interval < HOUR_SECONDS) {
         dateString = [NSString stringWithFormat:@"Posted %d seconds ago", (int)interval];
     } else {
-        int hours = interval/HOUR_SECONDS;
+        int hours = interval/(HOUR_SECONDS*2);
         dateString = [NSString stringWithFormat:@"Posted %d hours ago", hours];
         
         if (hours > DAY_HOURS) {

@@ -7,9 +7,9 @@
 //
 
 #import "RCServiceManager.h"
-
 #import "RCSubredditObject.h"
 
+#define HOT_REDDITS_URL @"https://www.reddit.com/hot.json"
 
 @implementation RCServiceManager {
     int counterTest;
@@ -44,7 +44,7 @@
 }
 
 -(void)getHotSubredditsWithCallbackBlock:(void (^)(NSArray*))callbackBlock{
-    NSURLRequest * hotRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.reddit.com/hot.json?limit=10"]];
+    NSURLRequest * hotRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?limit=50", HOT_REDDITS_URL]]];
     
     NSURLSessionDataTask * hotJsonData = [urlSession dataTaskWithRequest:hotRequest completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSError * _error = nil;
@@ -74,15 +74,18 @@
     return redditObjects;
 }
 
--(void)getImageWithImageURLString:(NSString*)imageUrl{
-    NSURLSessionDownloadTask *getImageTask =
-    [urlSession downloadTaskWithURL:[NSURL URLWithString:imageUrl]
-                  completionHandler:^(NSURL *location, NSURLResponse *response, NSError *error) {
-                      NSData * responseData = [NSData dataWithContentsOfURL:location];
-                      NSLog(@"DATA DEL RESPONSE%@", [responseData description]);
-                      
-                  }];
-    [getImageTask resume];
+-(void)getImageWithImageURL:(NSURL*) url andCallbackBlock:(void (^)(NSData*))callbackBlock {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+    dispatch_async(queue, ^{
+        NSError * error = nil;
+        NSData * imageData = [NSData dataWithContentsOfURL:url options:0 error:&error];
+        if (error)
+            callbackBlock(nil);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callbackBlock(imageData);
+        });
+    });
 }
 
 @end

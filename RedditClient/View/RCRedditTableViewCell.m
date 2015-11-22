@@ -7,6 +7,7 @@
 //
 
 #import "RCRedditTableViewCell.h"
+#import "RCServiceManager.h"
 
 @implementation RCRedditTableViewCell
 
@@ -14,16 +15,23 @@
 @synthesize numberOfCommentsLabel;
 @synthesize createdAtLabel;
 @synthesize authorLabel;
-@synthesize thumbnailImage;
+@synthesize thumbnailImage = _thumbnailImage;
 
 - (void)awakeFromNib {
-    // Initialization code
+}
+
+-(void)setThumbnailImageWithURL:(NSURL*)url {
+    [[RCServiceManager sharedInstance] getImageWithImageURL:url andCallbackBlock:^(NSData *imageData) {
+        if (imageData) {
+            _thumbnailImage.image = [UIImage imageWithData:imageData];
+        } else {
+            _thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        }
+    }];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
 @end

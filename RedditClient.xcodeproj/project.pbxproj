@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		846C31E51C004F240028BDAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E41C004F240028BDAD /* main.m */; };
 		846C31E81C004F240028BDAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E71C004F240028BDAD /* AppDelegate.m */; };
-		846C31EB1C004F240028BDAD /* RCMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31EA1C004F240028BDAD /* RCMainTableViewController.m */; };
 		846C31EE1C004F240028BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846C31EC1C004F240028BDAD /* Main.storyboard */; };
 		846C31F11C004F240028BDAD /* RedditClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 846C31EF1C004F240028BDAD /* RedditClient.xcdatamodeld */; };
 		846C31F31C004F240028BDAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846C31F21C004F240028BDAD /* Assets.xcassets */; };
@@ -19,8 +18,11 @@
 		846C321B1C0053250028BDAD /* RCServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C321A1C0053250028BDAD /* RCServiceManager.m */; };
 		846C32231C0076650028BDAD /* RCSubredditObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C32221C0076650028BDAD /* RCSubredditObject.m */; };
 		846C32271C008FCA0028BDAD /* RCRedditTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C32261C008FCA0028BDAD /* RCRedditTableViewCell.m */; };
-		846C322B1C00952E0028BDAD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C32291C00952E0028BDAD /* placeholder.png */; };
-		846C322C1C00952E0028BDAD /* splash.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 846C322A1C00952E0028BDAD /* splash.jpg */; };
+		846C32311C00A0810028BDAD /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C322F1C00A0810028BDAD /* placeholder.png */; };
+		846C32341C00A5E80028BDAD /* headerImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C32331C00A5E80028BDAD /* headerImage.png */; };
+		846C32381C00D9580028BDAD /* RCLinkDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C32371C00D9580028BDAD /* RCLinkDetailViewController.m */; };
+		846C323B1C00D9720028BDAD /* RCMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C323A1C00D9720028BDAD /* RCMainTableViewController.m */; };
+		846C323D1C00E7980028BDAD /* Reddit-alien.png in Resources */ = {isa = PBXBuildFile; fileRef = 846C323C1C00E7980028BDAD /* Reddit-alien.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,8 +47,6 @@
 		846C31E41C004F240028BDAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		846C31E61C004F240028BDAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		846C31E71C004F240028BDAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		846C31E91C004F240028BDAD /* RCMainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCMainTableViewController.h; sourceTree = "<group>"; };
-		846C31EA1C004F240028BDAD /* RCMainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCMainTableViewController.m; sourceTree = "<group>"; };
 		846C31ED1C004F240028BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		846C31F01C004F240028BDAD /* RedditClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RedditClient.xcdatamodel; sourceTree = "<group>"; };
 		846C31F21C004F240028BDAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -64,8 +64,13 @@
 		846C32221C0076650028BDAD /* RCSubredditObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSubredditObject.m; sourceTree = "<group>"; };
 		846C32251C008FCA0028BDAD /* RCRedditTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCRedditTableViewCell.h; path = View/RCRedditTableViewCell.h; sourceTree = "<group>"; };
 		846C32261C008FCA0028BDAD /* RCRedditTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCRedditTableViewCell.m; path = View/RCRedditTableViewCell.m; sourceTree = "<group>"; };
-		846C32291C00952E0028BDAD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
-		846C322A1C00952E0028BDAD /* splash.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = splash.jpg; sourceTree = "<group>"; };
+		846C322F1C00A0810028BDAD /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		846C32331C00A5E80028BDAD /* headerImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = headerImage.png; sourceTree = "<group>"; };
+		846C32361C00D9580028BDAD /* RCLinkDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCLinkDetailViewController.h; path = Controller/RCLinkDetailViewController.h; sourceTree = "<group>"; };
+		846C32371C00D9580028BDAD /* RCLinkDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCLinkDetailViewController.m; path = Controller/RCLinkDetailViewController.m; sourceTree = "<group>"; };
+		846C32391C00D9720028BDAD /* RCMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCMainTableViewController.h; path = Controller/RCMainTableViewController.h; sourceTree = "<group>"; };
+		846C323A1C00D9720028BDAD /* RCMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCMainTableViewController.m; path = Controller/RCMainTableViewController.m; sourceTree = "<group>"; };
+		846C323C1C00E7980028BDAD /* Reddit-alien.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reddit-alien.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,20 +121,19 @@
 		846C31E21C004F240028BDAD /* RedditClient */ = {
 			isa = PBXGroup;
 			children = (
-				846C32241C008F8B0028BDAD /* View */,
-				846C32201C00764A0028BDAD /* Model */,
 				846C31E61C004F240028BDAD /* AppDelegate.h */,
 				846C31E71C004F240028BDAD /* AppDelegate.m */,
 				846C32191C0053250028BDAD /* RCServiceManager.h */,
 				846C321A1C0053250028BDAD /* RCServiceManager.m */,
-				846C31E91C004F240028BDAD /* RCMainTableViewController.h */,
-				846C31EA1C004F240028BDAD /* RCMainTableViewController.m */,
-				846C31EC1C004F240028BDAD /* Main.storyboard */,
-				846C31F21C004F240028BDAD /* Assets.xcassets */,
+				846C32351C00BC310028BDAD /* Controller */,
+				846C32241C008F8B0028BDAD /* View */,
+				846C32201C00764A0028BDAD /* Model */,
 				846C32281C00952E0028BDAD /* Assets */,
 				846C31F41C004F240028BDAD /* LaunchScreen.storyboard */,
 				846C31F71C004F240028BDAD /* Info.plist */,
 				846C31EF1C004F240028BDAD /* RedditClient.xcdatamodeld */,
+				846C31EC1C004F240028BDAD /* Main.storyboard */,
+				846C31F21C004F240028BDAD /* Assets.xcassets */,
 				846C31E31C004F240028BDAD /* Supporting Files */,
 			);
 			path = RedditClient;
@@ -182,10 +186,22 @@
 		846C32281C00952E0028BDAD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				846C32291C00952E0028BDAD /* placeholder.png */,
-				846C322A1C00952E0028BDAD /* splash.jpg */,
+				846C32331C00A5E80028BDAD /* headerImage.png */,
+				846C322F1C00A0810028BDAD /* placeholder.png */,
+				846C323C1C00E7980028BDAD /* Reddit-alien.png */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		846C32351C00BC310028BDAD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				846C32391C00D9720028BDAD /* RCMainTableViewController.h */,
+				846C323A1C00D9720028BDAD /* RCMainTableViewController.m */,
+				846C32361C00D9580028BDAD /* RCLinkDetailViewController.h */,
+				846C32371C00D9580028BDAD /* RCLinkDetailViewController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,10 +308,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				846C31F61C004F240028BDAD /* LaunchScreen.storyboard in Resources */,
-				846C322B1C00952E0028BDAD /* placeholder.png in Resources */,
+				846C32311C00A0810028BDAD /* placeholder.png in Resources */,
 				846C31F31C004F240028BDAD /* Assets.xcassets in Resources */,
 				846C31EE1C004F240028BDAD /* Main.storyboard in Resources */,
-				846C322C1C00952E0028BDAD /* splash.jpg in Resources */,
+				846C32341C00A5E80028BDAD /* headerImage.png in Resources */,
+				846C323D1C00E7980028BDAD /* Reddit-alien.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,11 +339,12 @@
 			files = (
 				846C32231C0076650028BDAD /* RCSubredditObject.m in Sources */,
 				846C31F11C004F240028BDAD /* RedditClient.xcdatamodeld in Sources */,
-				846C31EB1C004F240028BDAD /* RCMainTableViewController.m in Sources */,
 				846C31E81C004F240028BDAD /* AppDelegate.m in Sources */,
+				846C32381C00D9580028BDAD /* RCLinkDetailViewController.m in Sources */,
 				846C321B1C0053250028BDAD /* RCServiceManager.m in Sources */,
 				846C31E51C004F240028BDAD /* main.m in Sources */,
 				846C32271C008FCA0028BDAD /* RCRedditTableViewCell.m in Sources */,
+				846C323B1C00D9720028BDAD /* RCMainTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,7 +488,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ger-id.RedditClient";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -483,7 +501,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ger-id.RedditClient";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

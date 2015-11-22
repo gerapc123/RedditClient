@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		846C31E51C004F240028BDAD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E41C004F240028BDAD /* main.m */; };
-		846C31E81C004F240028BDAD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E71C004F240028BDAD /* AppDelegate.m */; };
+		846C31E81C004F240028BDAD /* RCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 846C31E71C004F240028BDAD /* RCAppDelegate.m */; };
 		846C31EE1C004F240028BDAD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 846C31EC1C004F240028BDAD /* Main.storyboard */; };
 		846C31F11C004F240028BDAD /* RedditClient.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 846C31EF1C004F240028BDAD /* RedditClient.xcdatamodeld */; };
 		846C31F31C004F240028BDAD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 846C31F21C004F240028BDAD /* Assets.xcassets */; };
@@ -45,8 +45,8 @@
 /* Begin PBXFileReference section */
 		846C31E01C004F240028BDAD /* RedditClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RedditClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		846C31E41C004F240028BDAD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		846C31E61C004F240028BDAD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		846C31E71C004F240028BDAD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		846C31E61C004F240028BDAD /* RCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCAppDelegate.h; sourceTree = "<group>"; };
+		846C31E71C004F240028BDAD /* RCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCAppDelegate.m; sourceTree = "<group>"; };
 		846C31ED1C004F240028BDAD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		846C31F01C004F240028BDAD /* RedditClient.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RedditClient.xcdatamodel; sourceTree = "<group>"; };
 		846C31F21C004F240028BDAD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -121,8 +121,8 @@
 		846C31E21C004F240028BDAD /* RedditClient */ = {
 			isa = PBXGroup;
 			children = (
-				846C31E61C004F240028BDAD /* AppDelegate.h */,
-				846C31E71C004F240028BDAD /* AppDelegate.m */,
+				846C31E61C004F240028BDAD /* RCAppDelegate.h */,
+				846C31E71C004F240028BDAD /* RCAppDelegate.m */,
 				846C32191C0053250028BDAD /* RCServiceManager.h */,
 				846C321A1C0053250028BDAD /* RCServiceManager.m */,
 				846C32351C00BC310028BDAD /* Controller */,
@@ -339,7 +339,7 @@
 			files = (
 				846C32231C0076650028BDAD /* RCSubredditObject.m in Sources */,
 				846C31F11C004F240028BDAD /* RedditClient.xcdatamodeld in Sources */,
-				846C31E81C004F240028BDAD /* AppDelegate.m in Sources */,
+				846C31E81C004F240028BDAD /* RCAppDelegate.m in Sources */,
 				846C32381C00D9580028BDAD /* RCLinkDetailViewController.m in Sources */,
 				846C321B1C0053250028BDAD /* RCServiceManager.m in Sources */,
 				846C31E51C004F240028BDAD /* main.m in Sources */,
@@ -572,6 +572,7 @@
 				846C32121C004F250028BDAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		846C32131C004F250028BDAD /* Build configuration list for PBXNativeTarget "RedditClientTests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +581,7 @@
 				846C32151C004F250028BDAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		846C32161C004F250028BDAD /* Build configuration list for PBXNativeTarget "RedditClientUITests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +590,7 @@
 				846C32181C004F250028BDAD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

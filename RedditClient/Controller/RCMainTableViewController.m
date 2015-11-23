@@ -53,9 +53,11 @@
     cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
     
     if (subreddit.thumbnailImageData) {
+        [cell setConstraintsWithThumbnail:YES];
         cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
     } else {
         cell.thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        [cell setConstraintsWithThumbnail:NO];
         if (![subreddit.thumbnailURL.absoluteString isEqualToString:@""]) {
             [cell setThumbnailImageWithURL:subreddit.thumbnailURL];
         }

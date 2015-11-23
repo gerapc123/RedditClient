@@ -129,10 +129,10 @@
 				846C32241C008F8B0028BDAD /* View */,
 				846C32201C00764A0028BDAD /* Model */,
 				846C32281C00952E0028BDAD /* Assets */,
+				846C31EC1C004F240028BDAD /* Main.storyboard */,
 				846C31F41C004F240028BDAD /* LaunchScreen.storyboard */,
 				846C31F71C004F240028BDAD /* Info.plist */,
 				846C31EF1C004F240028BDAD /* RedditClient.xcdatamodeld */,
-				846C31EC1C004F240028BDAD /* Main.storyboard */,
 				846C31F21C004F240028BDAD /* Assets.xcassets */,
 				846C31E31C004F240028BDAD /* Supporting Files */,
 			);

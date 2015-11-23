@@ -6,6 +6,10 @@
 //  Copyright © 2015 Ger. All rights reserved.
 //
 
+#define DEFAULT_ROW_HEIGHT 130
+#define DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL 1200
+#define DEFAULT_TITLE_WIDTH_WITHOUT_THUMBNAIL 900
+
 #import <UIKit/UIKit.h>
 #import "RCMainTableViewController.h"
 #import "RCServiceManager.h"
@@ -50,7 +54,6 @@
     cell.titleLabel.text = subreddit.title;
     cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
     cell.createdAtLabel.text = [subreddit getCreatedAgo];
-//    cell.createdAtLabel.text = subreddit.createdAt.description;
     cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
     
     if (subreddit.thumbnailImageData) {
@@ -65,6 +68,27 @@
     }
 
     return cell;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
+    float retVal = DEFAULT_ROW_HEIGHT;
+    
+    RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
+    CGSize size = [subreddit.title sizeWithAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:22]}];
+    
+    float textWidthOneLine = ceilf(size.width);
+
+    float diff = 0;
+    if (!subreddit.thumbnailURL || [subreddit.thumbnailURL.absoluteString isEqualToString:@""]) {
+        return textWidthOneLine*(DEFAULT_ROW_HEIGHT/DEFAULT_TITLE_WIDTH_WITHOUT_THUMBNAIL);
+    } else {
+        if (textWidthOneLine > DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL) {
+            diff = textWidthOneLine - DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL;
+        }
+        diff = diff*0.1;
+    }
+    
+    return retVal+diff;
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

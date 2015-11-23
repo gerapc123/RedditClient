@@ -50,6 +50,7 @@
     cell.titleLabel.text = subreddit.title;
     cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
     cell.createdAtLabel.text = [subreddit getCreatedAgo];
+//    cell.createdAtLabel.text = subreddit.createdAt.description;
     cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
     
     if (subreddit.thumbnailImageData) {

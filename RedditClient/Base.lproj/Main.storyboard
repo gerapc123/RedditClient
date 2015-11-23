@@ -60,7 +60,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="84p-03-Osa">
-                                                    <rect key="frame" x="136" y="38" width="456" height="54"/>
+                                                    <rect key="frame" x="138" y="38" width="454" height="54"/>
                                                     <animations/>
                                                     <string key="text">Woke up to this a couple inches from me. I've never reached for my phone slower in my life as not to wake her. Reddit, meet my best friend Tupelo.</string>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
@@ -78,17 +78,6 @@
                                                     <color key="textColor" red="0.82853403141361259" green="0.62664123140656036" blue="0.26095138989013278" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="555555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMr-9q-nBA">
-                                                    <rect key="frame" x="136" y="100" width="120" height="20"/>
-                                                    <animations/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="CtX-Nv-TO7"/>
-                                                        <constraint firstAttribute="height" constant="20" id="OBS-vn-tAg"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                                    <color key="textColor" red="0.82853403141361259" green="0.62664123140656036" blue="0.26095138989013278" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="by author" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgp-AW-dvx">
                                                     <rect key="frame" x="472" y="100" width="120" height="20"/>
                                                     <animations/>
@@ -98,6 +87,17 @@
                                                         <constraint firstAttribute="height" constant="20" id="H7v-CQ-d2H"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" weight="black" pointSize="10"/>
+                                                    <color key="textColor" red="0.82853403141361259" green="0.62664123140656036" blue="0.26095138989013278" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="555555" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZMr-9q-nBA">
+                                                    <rect key="frame" x="138" y="100" width="120" height="20"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="CtX-Nv-TO7"/>
+                                                        <constraint firstAttribute="height" constant="20" id="OBS-vn-tAg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
                                                     <color key="textColor" red="0.82853403141361259" green="0.62664123140656036" blue="0.26095138989013278" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -113,10 +113,10 @@
                                                 <constraint firstItem="CWd-vC-F2Z" firstAttribute="top" secondItem="NFa-kc-xP5" secondAttribute="topMargin" constant="12" id="eAV-uW-QNp"/>
                                                 <constraint firstItem="CWd-vC-F2Z" firstAttribute="leading" secondItem="NFa-kc-xP5" secondAttribute="leadingMargin" id="eKM-rK-1i5"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Qgp-AW-dvx" secondAttribute="trailing" id="eqe-Nr-IiU"/>
-                                                <constraint firstItem="ZMr-9q-nBA" firstAttribute="leading" secondItem="CWd-vC-F2Z" secondAttribute="trailing" constant="8" id="fue-Ky-Ocg"/>
+                                                <constraint firstItem="ZMr-9q-nBA" firstAttribute="leading" secondItem="CWd-vC-F2Z" secondAttribute="trailing" constant="10" id="fue-Ky-Ocg"/>
                                                 <constraint firstItem="CWd-vC-F2Z" firstAttribute="centerY" secondItem="NFa-kc-xP5" secondAttribute="centerY" id="rsP-5N-qDj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="8O6-z4-wyO" secondAttribute="trailing" id="tfb-Qb-kiE"/>
-                                                <constraint firstItem="84p-03-Osa" firstAttribute="leading" secondItem="CWd-vC-F2Z" secondAttribute="trailing" constant="8" id="wTi-sf-TvQ"/>
+                                                <constraint firstItem="84p-03-Osa" firstAttribute="leading" secondItem="CWd-vC-F2Z" secondAttribute="trailing" constant="10" identifier="xTitlePosition" id="wTi-sf-TvQ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -125,10 +125,12 @@
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
                                             <outlet property="authorLabel" destination="Qgp-AW-dvx" id="ob9-Ep-cRE"/>
+                                            <outlet property="commentsXConstraint" destination="fue-Ky-Ocg" id="6qv-5q-sMa"/>
                                             <outlet property="createdAtLabel" destination="8O6-z4-wyO" id="7c9-7k-YOm"/>
                                             <outlet property="numberOfCommentsLabel" destination="ZMr-9q-nBA" id="3tc-MQ-kmu"/>
                                             <outlet property="thumbnailImage" destination="CWd-vC-F2Z" id="zHT-Ok-in4"/>
                                             <outlet property="titleLabel" destination="84p-03-Osa" id="27T-vY-ckh"/>
+                                            <outlet property="titleXConstraint" destination="wTi-sf-TvQ" id="bhg-UL-zIn"/>
                                             <segue destination="Ngi-eQ-PeN" kind="presentation" identifier="showDetailLink" modalPresentationStyle="formSheet" modalTransitionStyle="coverVertical" id="uez-eR-EdW"/>
                                         </connections>
                                     </tableViewCell>

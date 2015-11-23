@@ -17,5 +17,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView * thumbnailImage;
 
 -(void)setThumbnailImageWithURL:(NSURL*)url;
+-(void)setConstraintsWithThumbnail:(BOOL)withThumbnail;
 
 @end

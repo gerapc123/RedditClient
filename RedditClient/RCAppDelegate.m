@@ -6,13 +6,13 @@
 //  Copyright © 2015 Ger. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "RCAppDelegate.h"
 
-@interface AppDelegate ()
+@interface RCAppDelegate ()
 
 @end
 
-@implementation AppDelegate
+@implementation RCAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

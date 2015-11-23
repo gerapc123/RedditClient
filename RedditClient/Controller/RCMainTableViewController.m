@@ -47,20 +47,20 @@
     RCRedditTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellid" forIndexPath:indexPath];
     RCSubredditObject * subreddit = (RCSubredditObject*)[subredditObjects objectAtIndex:indexPath.row];
 
-    cell.userInteractionEnabled = NO;
     cell.titleLabel.text = subreddit.title;
     cell.authorLabel.text = [NSString stringWithFormat:@"By %@", subreddit.author];
     cell.createdAtLabel.text = [subreddit getCreatedAgo];
+//    cell.createdAtLabel.text = subreddit.createdAt.description;
     cell.numberOfCommentsLabel.text = [NSString stringWithFormat:@"%d comments", subreddit.numberOfComments];
     
     if (subreddit.thumbnailImageData) {
+        [cell setConstraintsWithThumbnail:YES];
         cell.thumbnailImage.image = [UIImage imageWithData:subreddit.thumbnailImageData];
-        cell.userInteractionEnabled = YES;
     } else {
         cell.thumbnailImage.image = [UIImage imageNamed:@"Reddit-alien.png"];
+        [cell setConstraintsWithThumbnail:NO];
         if (![subreddit.thumbnailURL.absoluteString isEqualToString:@""]) {
             [cell setThumbnailImageWithURL:subreddit.thumbnailURL];
-            cell.userInteractionEnabled = YES;
         }
     }
 
@@ -70,10 +70,10 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [myTableView indexPathForSelectedRow];
-    if ([[segue identifier] isEqualToString:@"showDetailLink"])
-    {
+    if ([[segue identifier] isEqualToString:@"showDetailLink"]) {
         RCSubredditObject *object = subredditObjects[indexPath.row];
-        [(RCLinkDetailViewController*)[segue destinationViewController] setUrl:object.imageURL];
+        [(RCLinkDetailViewController*)[segue destinationViewController] setUrl:object.linkURL];
+        [(RCLinkDetailViewController*)[segue destinationViewController] setImageUrl:object.imageURL];
     }
 }
 

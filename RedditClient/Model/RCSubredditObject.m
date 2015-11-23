@@ -9,8 +9,8 @@
 #import "RCSubredditObject.h"
 #import "RCServiceManager.h"
 
-#define DAY_HOURS 24
-#define HOUR_SECONDS 60
+#define HOURS_IN_A_DAY 24
+#define SECONDS_IN_A_MINUT 60
 
 @implementation RCSubredditObject
 
@@ -19,6 +19,7 @@
 @synthesize author              = _author;
 @synthesize thumbnailURL        = _thumbnailURL;
 @synthesize imageURL            = _imageURL;
+@synthesize linkURL             = _linkURL;
 @synthesize createdAt           = _createdAt;
 @synthesize numberOfComments    = _numberOfComments;
 @synthesize score               = _score;
@@ -33,13 +34,10 @@
     _author = [dict objectForKey:@"author"];
     _numberOfComments = [[dict objectForKey:@"num_comments"] intValue];
     _score = [[dict objectForKey:@"score"] intValue];
+    _linkURL = [NSURL URLWithString:[dict objectForKey:@"url"]];
     
-    NSTimeInterval epocTime = [[dict objectForKey:@"created"] floatValue];
-//    NSTimeInterval currentEpocTime = [[NSDate date] timeIntervalSince1970];
-    
-//    NSTimeInterval diferencia = epocTime - (currentEpocTime-3*60.0*60.0);
+    NSTimeInterval epocTime = [[dict objectForKey:@"created_utc"] floatValue];
     _createdAt = [NSDate dateWithTimeIntervalSince1970:epocTime];
-    NSLog(@"Title:%@ || %@", _title, _createdAt);
     
     _imageURL = nil;
     NSDictionary * sourceDict = [[[[dict objectForKey:@"preview"] objectForKey:@"images"] objectAtIndex:0] objectForKey:@"source"];
@@ -58,21 +56,18 @@
 }
 
 -(NSString*)getCreatedAgo{
-    float interval = [_createdAt timeIntervalSinceNow];
-    NSDateFormatter * dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setTimeZone:[NSTimeZone localTimeZone]];
-//    NSData * newDate = dateFormatter
+    float interval = [_createdAt timeIntervalSinceNow]*-1;
     
     NSString * dateString = @"";
-    if (interval < HOUR_SECONDS) {
+    if (interval < SECONDS_IN_A_MINUT) {
         dateString = [NSString stringWithFormat:@"Posted %d seconds ago", (int)interval];
     } else {
-        int hours = interval/(HOUR_SECONDS*2);
+        int hours = interval/(SECONDS_IN_A_MINUT*SECONDS_IN_A_MINUT);
         dateString = [NSString stringWithFormat:@"Posted %d hours ago", hours];
         
-        if (hours > DAY_HOURS) {
-            int days = hours/DAY_HOURS;
-            hours = hours%DAY_HOURS;
+        if (hours > HOURS_IN_A_DAY) {
+            int days = hours/HOURS_IN_A_DAY;
+            hours = hours%HOURS_IN_A_DAY;
             dateString = [NSString stringWithFormat:@"Posted %d days %d hours ago", days, hours];
         }
     }

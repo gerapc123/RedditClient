@@ -12,5 +12,6 @@
 
 @property (nonatomic, retain) IBOutlet UIWebView * webView;
 @property (nonatomic, retain) NSURL * url;
+@property (nonatomic, retain) NSURL * imageUrl;
 
 @end

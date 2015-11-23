@@ -10,7 +10,6 @@
 #import "RCServiceManager.h"
 
 @interface RCLinkDetailViewController () {
-    UIImage * image;
 }
 
 @end
@@ -18,12 +17,12 @@
 @implementation RCLinkDetailViewController
 
 @synthesize webView = _webView;
+@synthesize imageUrl = _imageUrl;
 @synthesize url;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    image = nil;
     NSURLRequest * request = [NSURLRequest requestWithURL:url];
     [_webView loadRequest:request];
 }
@@ -33,28 +32,34 @@
 }
 
 -(IBAction)saveToCameraRoll:(id)sender{
-    [[RCServiceManager sharedInstance] getImageWithImageURL:url andCallbackBlock:^(NSData *data) {
-        UIAlertView * alertView = [[UIAlertView alloc] initWithTitle:@"Save Image" message:@"Would you like to save this image ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
-        [alertView setDelegate:self];
-        
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [alertView show];
-        });
-        
-        image = [UIImage imageWithData:data];
-    }];
+    UIAlertView * alertView = nil;
+    if (_imageUrl && ![_imageUrl.absoluteString isEqualToString:@""]) {
+        alertView = [[UIAlertView alloc] initWithTitle:@"Save image" message:@"Would you like to save this image ?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"YES", nil];
+    } else {
+        alertView = [[UIAlertView alloc] initWithTitle:@"Save image" message:@"No image to save" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    }
+    [alertView setDelegate:self];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [alertView show];
+    });
 }
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
-        UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        [[RCServiceManager sharedInstance] getImageWithImageURL:_imageUrl andCallbackBlock:^(NSData *data) {
+            UIImage * image = [UIImage imageWithData:data];
+            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+        }];
     }
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView {
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

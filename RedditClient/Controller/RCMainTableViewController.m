@@ -6,9 +6,9 @@
 //  Copyright © 2015 Ger. All rights reserved.
 //
 
-#define DEFAULT_ROW_HEIGHT 130
-#define DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL 1200
-#define DEFAULT_TITLE_WIDTH_WITHOUT_THUMBNAIL 900
+#define DEFAULT_ROW_HEIGHT 130.0
+#define DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL 1200.0
+#define DEFAULT_TITLE_WIDTH_WITHOUT_THUMBNAIL 1000.0
 
 #import <UIKit/UIKit.h>
 #import "RCMainTableViewController.h"
@@ -79,14 +79,11 @@
     float textWidthOneLine = ceilf(size.width);
 
     float diff = 0;
-    if (!subreddit.thumbnailURL || [subreddit.thumbnailURL.absoluteString isEqualToString:@""]) {
-        return textWidthOneLine*(DEFAULT_ROW_HEIGHT/DEFAULT_TITLE_WIDTH_WITHOUT_THUMBNAIL);
-    } else {
-        if (textWidthOneLine > DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL) {
-            diff = textWidthOneLine - DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL;
-        }
-        diff = diff*0.1;
+    
+    if (textWidthOneLine > DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL) {
+        diff = textWidthOneLine - DEFAULT_TITLE_WIDTH_WITH_THUMBNAIL;
     }
+    diff = diff*0.1;
     
     return retVal+diff;
 }
